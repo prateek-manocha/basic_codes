@@ -6,7 +6,7 @@ import argparse
 import moviepy.editor
 
 
-def extract_frame_sound(video, folder):
+def extract_frame(video, folder):
     #For extraction of frames
 
     #To add leading zeros to frame number
@@ -31,6 +31,7 @@ def extract_frame_sound(video, folder):
     print('Total number of frames extracted: '+str(i))
     cap.release()
 
+def extract_sound(video, folder):
     #For extraction of sound
     video = moviepy.editor.VideoFileClip(video)
     audio = video.audio
@@ -43,4 +44,5 @@ if __name__ == '__main__':
     parser.add_argument("-v", help='video to be processed(name along with extension)', default='test_video.mkv')
     parser.add_argument("-f", help='folder path to save frames', default='test_video')
     args = parser.parse_args()
-    extract_frame_sound(args.v, args.f)
+    extract_frame(args.v, args.f)
+    extract_sound(args.v, args.f)
